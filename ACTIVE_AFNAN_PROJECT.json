@@ -1,0 +1,11 @@
+{
+  "selected_backend": "Afnan",
+  "selected_project": "D:/Hamza/Face Swap/wqs/afnan_pipeline",
+  "remote_project": "/workspace/wqs/afnan_pipeline",
+  "entry_point": "run.py",
+  "model_pipeline": "afnan/adapter.py",
+  "forward_plan": "POLISH_PLAN.md",
+  "status": "clean extracted baseline validated on CUDA; proposed polish changes are not implemented",
+  "preserved_comparison": "D:/Hamza/Face Swap/wqs/backend_comparison",
+  "original_afw_backup": "D:/Hamza/Face Swap/wqs/backups/afw-before-audit-20261014T144019Z.tar.gz"
+}

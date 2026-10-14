@@ -1,0 +1,74 @@
+[
+  {
+    "file": "inswapper_128.onnx",
+    "bytes": 555303150,
+    "sha256": "a290273ed497312095dac48cdef20feec9d5208298223dd01288ab202b54bea7",
+    "publisher_crc32": "7057c6ea",
+    "url": "https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/inswapper_128.onnx",
+    "license_metadata": "InsightFace noncommercial pretrained weights",
+    "verified": true
+  },
+  {
+    "file": "gfpgan_1.4.onnx",
+    "bytes": 340299087,
+    "sha256": "accc4757b26bdb89b32b4d3500d4f79c9dff97c1dd7c7104bf9dcb95e3311385",
+    "publisher_crc32": "5a6c6364",
+    "url": "https://github.com/facefusion/facefusion-assets/releases/download/models-3.0.0/gfpgan_1.4.onnx",
+    "license_metadata": "GFPGAN Apache-2.0; retain conversion source metadata",
+    "verified": true
+  },
+  {
+    "file": "xseg_1.onnx",
+    "bytes": 70324286,
+    "sha256": "c4d1498b8a03b5fe2a3a5d2ef2a0402ab03bd51edaf5b2d8d5fb764702a97dd3",
+    "publisher_crc32": "f207afe3",
+    "url": "https://github.com/facefusion/facefusion-assets/releases/download/models-3.1.0/xseg_1.onnx",
+    "license_metadata": "GPL-3.0",
+    "verified": true
+  },
+  {
+    "file": "buffalo_l/genderage.onnx",
+    "bytes": 1322532,
+    "sha256": "4fde69b1c810857b88c64a335084f1c3fe8f01246c9a191b48c7bb756d6652fb",
+    "zip_crc32": "5f7cd633",
+    "url": "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip",
+    "license_metadata": "InsightFace noncommercial pretrained weights; observed SHA256, publisher cryptographic hash unavailable",
+    "verified": true
+  },
+  {
+    "file": "buffalo_l/2d106det.onnx",
+    "bytes": 5030888,
+    "sha256": "f001b856447c413801ef5c42091ed0cd516fcd21f2d6b79635b1e733a7109dbf",
+    "zip_crc32": "8664693e",
+    "url": "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip",
+    "license_metadata": "InsightFace noncommercial pretrained weights; observed SHA256, publisher cryptographic hash unavailable",
+    "verified": true
+  },
+  {
+    "file": "buffalo_l/det_10g.onnx",
+    "bytes": 16923827,
+    "sha256": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+    "zip_crc32": "df529b9e",
+    "url": "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip",
+    "license_metadata": "InsightFace noncommercial pretrained weights; observed SHA256, publisher cryptographic hash unavailable",
+    "verified": true
+  },
+  {
+    "file": "buffalo_l/1k3d68.onnx",
+    "bytes": 143607619,
+    "sha256": "df5c06b8a0c12e422b2ed8947b8869faa4105387f199c477af038aa01f9a45cc",
+    "zip_crc32": "3d2d8cff",
+    "url": "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip",
+    "license_metadata": "InsightFace noncommercial pretrained weights; observed SHA256, publisher cryptographic hash unavailable",
+    "verified": true
+  },
+  {
+    "file": "buffalo_l/w600k_r50.onnx",
+    "bytes": 174383860,
+    "sha256": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43",
+    "zip_crc32": "707f504c",
+    "url": "https://github.com/deepinsight/insightface/releases/download/v0.7/buffalo_l.zip",
+    "license_metadata": "InsightFace noncommercial pretrained weights; observed SHA256, publisher cryptographic hash unavailable",
+    "verified": true
+  }
+]

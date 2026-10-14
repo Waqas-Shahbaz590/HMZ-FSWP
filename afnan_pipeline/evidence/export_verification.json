@@ -1,0 +1,109 @@
+{
+  "frames": 3076,
+  "first_source_frame_index": 0,
+  "last_source_frame_index": 3075,
+  "first_timestamp_ms": 0.0,
+  "last_timestamp_ms": 123000.0,
+  "status_counts": {
+    "animated": 3071,
+    "original_frame_fallback": 5
+  },
+  "strictly_increasing_frame_indices": true,
+  "strictly_increasing_timestamps": true,
+  "videos": {
+    "synthetic_avatar.mp4": {
+      "codec": "h264",
+      "decoded_frames": 3076,
+      "width": 720,
+      "height": 1280,
+      "fps": 25.0,
+      "duration_seconds": 123.04,
+      "audio_streams": 0
+    },
+    "comparison.mp4": {
+      "codec": "h264",
+      "decoded_frames": 3076,
+      "width": 1440,
+      "height": 1280,
+      "fps": 25.0,
+      "duration_seconds": 123.04,
+      "audio_streams": 0
+    }
+  },
+  "files": {
+    "synthetic_avatar.mp4": {
+      "bytes": 103883419,
+      "sha256": "e56accbb256e1f3dcfedde064b9db0333bc4c827b33eb8943ef9ff4208d9d602"
+    },
+    "comparison.mp4": {
+      "bytes": 198514046,
+      "sha256": "c903379593ea368f63e31615664450c99e4072abd285fbf1f6b61add8e2fff84"
+    },
+    "summary.json": {
+      "bytes": 5061,
+      "sha256": "706e1400eeade3fd3fa7d8dcbbb16c375403894dba171f958a7e25d6109b2db7"
+    },
+    "frame_metrics.csv": {
+      "bytes": 3695145,
+      "sha256": "28521dd11cebb1893d84bdd9901df655baf39bf0c2d52af4aa14c85d55e3f0d7"
+    }
+  },
+  "disclosure_band_samples": {
+    "synthetic_avatar.mp4": {
+      "passed": true,
+      "samples": [
+        {
+          "frame_index": 0,
+          "dark_pixel_fraction": {
+            "bottom": 1.0
+          }
+        },
+        {
+          "frame_index": 1538,
+          "dark_pixel_fraction": {
+            "bottom": 1.0
+          }
+        },
+        {
+          "frame_index": 3075,
+          "dark_pixel_fraction": {
+            "bottom": 1.0
+          }
+        }
+      ],
+      "scope": "First, middle and last frame border pixels only. No OCR; does not verify text semantics or every frame."
+    },
+    "comparison.mp4": {
+      "passed": true,
+      "samples": [
+        {
+          "frame_index": 0,
+          "dark_pixel_fraction": {
+            "right_bottom": 1.0,
+            "right_top": 1.0,
+            "left_top": 1.0
+          }
+        },
+        {
+          "frame_index": 1538,
+          "dark_pixel_fraction": {
+            "right_bottom": 1.0,
+            "right_top": 1.0,
+            "left_top": 1.0
+          }
+        },
+        {
+          "frame_index": 3075,
+          "dark_pixel_fraction": {
+            "right_bottom": 1.0,
+            "right_top": 1.0,
+            "left_top": 1.0
+          }
+        }
+      ],
+      "scope": "First, middle and last frame border pixels only. No OCR; does not verify text semantics or every frame."
+    }
+  },
+  "complete_exports": true,
+  "validation_scope": "Decoded counts, silent streams, geometry, FPS, duration, metrics order, file hashes and sampled disclosure borders. Not identity or perceptual-quality validation."
+}

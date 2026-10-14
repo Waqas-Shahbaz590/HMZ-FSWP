@@ -1,0 +1,14 @@
+# Python 3.12; separate ONNX Runtime CUDA 12 environment.
+numpy==1.26.4
+onnxruntime-gpu==1.24.4
+onnx==1.17.0
+insightface==0.7.3
+opencv-python-headless==4.10.0.84
+scipy==1.14.1
+scikit-image==0.24.0
+albumentations==1.4.3
+cython==3.0.11
+nvidia-ml-py==13.580.82
+
+# Supply compatible CUDA 12 and cuDNN 9 runtime libraries, then verify actual
+# session providers and a --profile inference probe. Do not install a GPU driver.

@@ -1,0 +1,13 @@
+{
+  "selected": true,
+  "project": "afnan_pipeline",
+  "development_direction": "Afnan quality, causal stability and measured live-frame optimization",
+  "baseline_algorithm_preserved": true,
+  "extracted_project_gpu_smoke": "passed: 30 hand-occlusion frames, CUDA execution, both exports verified",
+  "unit_tests": "14 passed",
+  "baseline": "INSwapper 128 + GFPGAN 1.4 blend 0.75 + XSeg1",
+  "placeholder_application_included": false,
+  "socket_server_included": false,
+  "unrelated_facefusion_runtime_included": false,
+  "quality_and_30fps_changes": "planned in POLISH_PLAN.md; not yet implemented"
+}

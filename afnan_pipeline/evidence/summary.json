@@ -1,0 +1,171 @@
+{
+  "backend": "afnan",
+  "variant": "inswapper128_gfpgan_blend_0.75",
+  "complete": true,
+  "error": null,
+  "finalization_errors": [],
+  "frames": 3076,
+  "status_counts": {
+    "animated": 3071,
+    "original_frame_fallback": 5
+  },
+  "reason_counts": {
+    "face_missing": 5
+  },
+  "wall_seconds": 748.3314018459932,
+  "end_to_end_fps": 4.110478315372153,
+  "inference_only_fps": 5.63716214374717,
+  "latency_ms": {
+    "total_ms": {
+      "mean": 242.9388479418736,
+      "p50": 238.20983149926178,
+      "p95": 291.330192478199,
+      "max": 534.7236179804895
+    },
+    "backend_ms": {
+      "mean": 177.39422328116214,
+      "p50": 174.9785334977787,
+      "p95": 218.38574775028974,
+      "max": 426.01161799393594
+    },
+    "decode_ms": {
+      "mean": 1.1511995007384808,
+      "p50": 1.023356497171335,
+      "p95": 1.6866612568264827,
+      "max": 27.65745099168271
+    },
+    "output_ms": {
+      "mean": 9.072374055726815,
+      "p50": 8.330147495144047,
+      "p95": 13.09615474747261,
+      "max": 72.34119100030512
+    },
+    "quality_ms": {
+      "mean": 54.79460231521105,
+      "p50": 54.345198994269595,
+      "p95": 62.66812875401229,
+      "max": 188.43130499590188
+    }
+  },
+  "stages_ms": {
+    "composite": {
+      "mean": 15.57845389619951,
+      "p50": 14.813379500992596,
+      "p95": 22.861709010612685,
+      "max": 36.491287988610566
+    },
+    "detect": {
+      "mean": 7.800372643422751,
+      "p50": 7.2234545077662915,
+      "p95": 11.409188249672297,
+      "max": 18.662647024029866
+    },
+    "occlusion": {
+      "mean": 27.289640357855557,
+      "p50": 21.57266650465317,
+      "p95": 40.913071992690675,
+      "max": 80.41460398817435
+    },
+    "restore": {
+      "mean": 32.735167000091074,
+      "p50": 32.39879100874532,
+      "p95": 34.40797499206383,
+      "max": 200.57296901359223
+    },
+    "swap": {
+      "mean": 93.68264614255092,
+      "p50": 95.847357501043,
+      "p95": 117.73484799778089,
+      "max": 144.3386020255275
+    }
+  },
+  "gpu_memory_peak_mib": {
+    "nvml_device_used_mib": 4408.5,
+    "nvml_process_used_mib": null
+  },
+  "gpu_memory_definition": "NVML sampled device use includes other processes. Process use may be unavailable in container PID namespaces. ONNX allocations are not Torch allocator counters.",
+  "temporal_proxy": {
+    "mean": 0.01048111644789948,
+    "p50": 0.008961720857769251,
+    "p95": 0.02008397094905377,
+    "max": 0.07045488059520721
+  },
+  "quality_limitations": "Flow-aligned L1 inside the detected face bbox is a limited temporal proxy, not an identity, hand preservation, liveness, or fraud accuracy metric. Detection ROIs differ between backends. Human inspection is required.",
+  "video": {
+    "fps": 25.0,
+    "width": 720,
+    "height": 1280,
+    "audio": false
+  },
+  "input_provenance": {
+    "reference": {
+      "filename": "reference.png",
+      "sha256": "98e208d81e663d304e48f11a22fc6f8c430ba60280d54bd536779b5a530afe93"
+    },
+    "driving": {
+      "filename": "driving_phone_720p25.mp4",
+      "sha256": "baf8a71c6c90091ca20e9116b419c70e65df51a393da9c2da3682e8bac78a3ae"
+    }
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.39",
+    "opencv": "4.10.0",
+    "numpy": "1.26.4",
+    "torch": "not installed / package metadata unavailable",
+    "torchvision": "not installed / package metadata unavailable",
+    "mediapipe": "not installed / package metadata unavailable",
+    "SAM-2": "not installed / package metadata unavailable",
+    "nvidia-ml-py": "13.580.82",
+    "onnxruntime": "not installed / package metadata unavailable",
+    "onnxruntime-gpu": "1.24.4"
+  },
+  "setup_ms": 5283.468777983217,
+  "prepared": {
+    "prepare_ms": 479.9012900039088,
+    "source_face_count": 1,
+    "source_bbox": [
+      166.705810546875,
+      595.251708984375,
+      526.3720092773438,
+      1070.1650390625
+    ],
+    "source_detection_score": 0.8498847484588623,
+    "actual_providers": {
+      "swap": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "restore": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "occlusion": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "face_detection": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ],
+      "face_recognition": [
+        "CUDAExecutionProvider",
+        "CPUExecutionProvider"
+      ]
+    },
+    "restore_blend": 0.75,
+    "detector_size": [
+      320,
+      320
+    ],
+    "detector_threshold": 0.25
+  },
+  "backend_close": null,
+  "afnan_node_profiles": [],
+  "source_bounds": {
+    "start_seconds": 0.0,
+    "end_seconds": null,
+    "preroll_frames": 0
+  },
+  "timing_definition": "Completed synchronous ONNX host-return calls. Stages may cover only backend subsets; backend_ms is full process call. Full end-to-end FPS includes sequential decode, two labeled H264 exports, quality, CSV and encoder finalization; setup, model download, hash and profiling close are excluded. Playback FPS is independent."
+}

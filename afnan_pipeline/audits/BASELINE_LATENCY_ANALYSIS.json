@@ -1,0 +1,582 @@
+{
+  "audit_date": "2026-10-14",
+  "scope": "Read-only decomposition of existing Afnan 30-frame profiled probe and 3076-frame unprofiled full baseline; no new GPU or SSH job; no runtime change or achieved-30FPS claim.",
+  "machine": {
+    "gpu": "NVIDIA RTX A5000",
+    "driver": "555.58.02",
+    "reported_gpu_memory_mib": 23028,
+    "cpu": "AMD EPYC 7663",
+    "cpu_quota_equivalent_cores": 26.87999,
+    "onnxruntime_gpu": "1.24.4",
+    "python": "3.12.14"
+  },
+  "evidence": {
+    "source_setup_archive": {
+      "path": "D:\\Hamza\\Face Swap\\wqs\\backups\\comparison-source-setup-20261014.tar.gz",
+      "sha256": "b5c6cd3ce8e8ccb1c265a1bbcd0367fe1d2aa008e391770c9a535c9de7cb514f",
+      "size_bytes": 102329691
+    },
+    "files": {
+      "outputs/afnan_full/summary.json": {
+        "sha256": "706e1400eeade3fd3fa7d8dcbbb16c375403894dba171f958a7e25d6109b2db7",
+        "size_bytes": 5061
+      },
+      "outputs/afnan_probe/summary.json": {
+        "sha256": "820548193ce94eb5ad7f53681c64df22d763d9d8c90f2c7ded841880d4bce2f5",
+        "size_bytes": 6708
+      },
+      "outputs/afnan_probe/frame_metrics.csv": {
+        "sha256": "db5e6b66125eb19184ea82c830dfed7cc68ef872842a747ffa8594bd3c2852ee",
+        "size_bytes": 36164
+      },
+      "logs/run_afnan_probe.log": {
+        "sha256": "dfb7752354214e100c5cd80b7023ee4f8b56c1c474f9faa8e01c4b791a13df63",
+        "size_bytes": 5674
+      },
+      "run.py": {
+        "sha256": "d24903fee6c51e2a0352021d951bdd3cd51910581882df35a22aa25a8fc307a6",
+        "size_bytes": 11779
+      },
+      "afnan/adapter.py": {
+        "sha256": "ee673b7f82472bc8c09740c24afac66235b605d93edd31fdbb20a44f672d5526",
+        "size_bytes": 9926
+      },
+      "afnan/compositing.py": {
+        "sha256": "41878aae84bb90e4ad9644b982d389a6cfbc3155b0d712346116e5fbeb6fa825",
+        "size_bytes": 1706
+      },
+      "MACHINE_INVENTORY.json": {
+        "sha256": "75ba30b688db23fe9e48c2d949a674fadd36b4f622be434312ea22494c5fddbb",
+        "size_bytes": 7982
+      }
+    },
+    "exact_package": {
+      "version": "insightface 0.7.3",
+      "url": "https://files.pythonhosted.org/packages/0b/8d/0f4af90999ca96cf8cb846eb5ae27c5ef5b390f9c090dd19e4fa76364c13/insightface-0.7.3.tar.gz",
+      "pypi_sdist_sha256_verified": "f191f719612ebb37018f41936814500544cd0f86e6fcd676c023f354c668ddf7",
+      "source_files_sha256": {
+        "insightface/app/face_analysis.py": "e8165d79b5fb2a8813200364839876ddd249ba6957a7cdcbf78de327da12ab21",
+        "insightface/model_zoo/inswapper.py": "2743b930ac7077b1290663ec45d6501d85585d10b3c293e954196b39a3566932",
+        "insightface/model_zoo/model_zoo.py": "2d42f6f8c7a1c8a49426aedbf783eda8487356301cf951433ad6cc224d74b8db"
+      }
+    }
+  },
+  "full_baseline": {
+    "frames": 3076,
+    "playback_fps": 25.0,
+    "end_to_end_fps": 4.110478315372153,
+    "backend_only_throughput_fps": 5.63716214374717,
+    "latency_ms": {
+      "total_ms": {
+        "mean": 242.9388479418736,
+        "p50": 238.20983149926178,
+        "p95": 291.330192478199,
+        "max": 534.7236179804895
+      },
+      "backend_ms": {
+        "mean": 177.39422328116214,
+        "p50": 174.9785334977787,
+        "p95": 218.38574775028974,
+        "max": 426.01161799393594
+      },
+      "decode_ms": {
+        "mean": 1.1511995007384808,
+        "p50": 1.023356497171335,
+        "p95": 1.6866612568264827,
+        "max": 27.65745099168271
+      },
+      "output_ms": {
+        "mean": 9.072374055726815,
+        "p50": 8.330147495144047,
+        "p95": 13.09615474747261,
+        "max": 72.34119100030512
+      },
+      "quality_ms": {
+        "mean": 54.79460231521105,
+        "p50": 54.345198994269595,
+        "p95": 62.66812875401229,
+        "max": 188.43130499590188
+      }
+    },
+    "stages_ms": {
+      "composite": {
+        "mean": 15.57845389619951,
+        "p50": 14.813379500992596,
+        "p95": 22.861709010612685,
+        "max": 36.491287988610566
+      },
+      "detect": {
+        "mean": 7.800372643422751,
+        "p50": 7.2234545077662915,
+        "p95": 11.409188249672297,
+        "max": 18.662647024029866
+      },
+      "occlusion": {
+        "mean": 27.289640357855557,
+        "p50": 21.57266650465317,
+        "p95": 40.913071992690675,
+        "max": 80.41460398817435
+      },
+      "restore": {
+        "mean": 32.735167000091074,
+        "p50": 32.39879100874532,
+        "p95": 34.40797499206383,
+        "max": 200.57296901359223
+      },
+      "swap": {
+        "mean": 93.68264614255092,
+        "p50": 95.847357501043,
+        "p95": 117.73484799778089,
+        "max": 144.3386020255275
+      }
+    },
+    "memory_peak_mib": {
+      "nvml_device_used_mib": 4408.5,
+      "nvml_process_used_mib": null
+    },
+    "definition": "Completed synchronous ONNX host-return calls. Stages may cover only backend subsets; backend_ms is full process call. Full end-to-end FPS includes sequential decode, two labeled H264 exports, quality, CSV and encoder finalization; setup, model download, hash and profiling close are excluded. Playback FPS is independent."
+  },
+  "probe": {
+    "frames": 30,
+    "latency_ms": {
+      "total_ms": {
+        "mean": 244.88908296722607,
+        "p50": 235.5286719975993,
+        "p95": 247.28149954316902,
+        "max": 570.4167069925461
+      },
+      "backend_ms": {
+        "mean": 182.15556183616476,
+        "p50": 175.18853199726436,
+        "p95": 183.94197598681785,
+        "max": 459.0749350027181
+      },
+      "decode_ms": {
+        "mean": 1.9076264007405068,
+        "p50": 1.0038364998763427,
+        "p95": 1.2284215525141917,
+        "max": 28.52699998766184
+      },
+      "output_ms": {
+        "mean": 9.723266799119301,
+        "p50": 7.07645999500528,
+        "p95": 11.425136106845457,
+        "max": 71.51340099517256
+      },
+      "quality_ms": {
+        "mean": 50.609559135045856,
+        "p50": 51.98427799041383,
+        "p95": 53.99824910564348,
+        "max": 55.20818801596761
+      }
+    },
+    "stages_ms": {
+      "composite": {
+        "mean": 14.800364967474403,
+        "p50": 13.096748021780513,
+        "p95": 20.125787041615695,
+        "max": 20.337488007498905
+      },
+      "detect": {
+        "mean": 13.964421799755655,
+        "p50": 13.808492498355918,
+        "p95": 15.317966605653053,
+        "max": 15.681129007134587
+      },
+      "occlusion": {
+        "mean": 22.613026800293785,
+        "p50": 20.690370511147194,
+        "p95": 21.81153554993216,
+        "max": 80.89273099903949
+      },
+      "restore": {
+        "mean": 37.35245343608161,
+        "p50": 31.924301511025988,
+        "p95": 32.949014607584104,
+        "max": 193.4871800185647
+      },
+      "swap": {
+        "mean": 93.113353769877,
+        "p50": 95.1549505116418,
+        "p95": 99.55829528771574,
+        "max": 148.4082649985794
+      }
+    },
+    "sessions": [
+      {
+        "ordinal": 0,
+        "model_file": "buffalo_l/1k3d68.onnx",
+        "stage": null,
+        "profile_file": "outputs/afnan_probe/profiles/session_0_2026-10-14_18-04-44.json",
+        "sha256": "6512a4d8a6bb0a5d4e0d85e08008c491b98d366007c013affdd08d1ab7def637",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": null,
+        "reference_prepare_calls_removed": 0,
+        "processing_30": null,
+        "processing_warm29_excluding_first_processed_frame": null,
+        "first_model_run_ms": null,
+        "session_initialization_ms": [
+          221.021
+        ],
+        "provider_node_event_counts": {},
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 1,
+        "model_file": "buffalo_l/2d106det.onnx",
+        "stage": null,
+        "profile_file": "outputs/afnan_probe/profiles/session_1_2026-10-14_18-04-45.json",
+        "sha256": "8be704a6bc2c0f4d92ecee9ba2f37c366065e8a888cce73c2ce65ad69b8f2122",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": null,
+        "reference_prepare_calls_removed": 0,
+        "processing_30": null,
+        "processing_warm29_excluding_first_processed_frame": null,
+        "first_model_run_ms": null,
+        "session_initialization_ms": [
+          79.736
+        ],
+        "provider_node_event_counts": {},
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 2,
+        "model_file": "buffalo_l/det_10g.onnx",
+        "stage": "detect",
+        "profile_file": "outputs/afnan_probe/profiles/session_2_2026-10-14_18-04-45.json",
+        "sha256": "6d6954a6ae066a5d8f91571b458c48dbe7eed098d7ddf5463d346382fb2e0df6",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": {
+          "count": 31,
+          "mean_ms": 18.997225806451613,
+          "p50_ms": 6.367,
+          "p95_ms": 7.231999999999999,
+          "max_ms": 395.736
+        },
+        "reference_prepare_calls_removed": 1,
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 6.439266666666667,
+          "p50_ms": 6.3605,
+          "p95_ms": 6.956049999999999,
+          "max_ms": 7.467
+        },
+        "processing_warm29_excluding_first_processed_frame": {
+          "count": 29,
+          "mean_ms": 6.420034482758621,
+          "p50_ms": 6.354,
+          "p95_ms": 6.807599999999999,
+          "max_ms": 7.467
+        },
+        "first_model_run_ms": 395.736,
+        "session_initialization_ms": [
+          23.509
+        ],
+        "provider_node_event_counts": {
+          "CUDAExecutionProvider": 4371,
+          "CPUExecutionProvider": 372
+        },
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 3,
+        "model_file": "buffalo_l/genderage.onnx",
+        "stage": null,
+        "profile_file": "outputs/afnan_probe/profiles/session_3_2026-10-14_18-04-45.json",
+        "sha256": "fa68a9941855fb1c8ab50ee9461d04b7542331bda71961fb9aefa6eaa9f1e1ca",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": null,
+        "reference_prepare_calls_removed": 0,
+        "processing_30": null,
+        "processing_warm29_excluding_first_processed_frame": null,
+        "first_model_run_ms": null,
+        "session_initialization_ms": [
+          15.76
+        ],
+        "provider_node_event_counts": {},
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 4,
+        "model_file": "buffalo_l/w600k_r50.onnx",
+        "stage": "recognition",
+        "profile_file": "outputs/afnan_probe/profiles/session_4_2026-10-14_18-04-45.json",
+        "sha256": "2d4175f09520a21d5773d7c0e00f7897a1409e666aed03b889507d4f8726879e",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": {
+          "count": 31,
+          "mean_ms": 8.499645161290323,
+          "p50_ms": 5.182,
+          "p95_ms": 6.105,
+          "max_ms": 105.988
+        },
+        "reference_prepare_calls_removed": 1,
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 5.2500333333333336,
+          "p50_ms": 5.1815,
+          "p95_ms": 5.35505,
+          "max_ms": 6.832
+        },
+        "processing_warm29_excluding_first_processed_frame": {
+          "count": 29,
+          "mean_ms": 5.2524137931034485,
+          "p50_ms": 5.182,
+          "p95_ms": 5.3576,
+          "max_ms": 6.832
+        },
+        "first_model_run_ms": 105.988,
+        "session_initialization_ms": [
+          104.466
+        ],
+        "provider_node_event_counts": {
+          "CUDAExecutionProvider": 4030
+        },
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 5,
+        "model_file": "inswapper_128.onnx",
+        "stage": "swap",
+        "profile_file": "outputs/afnan_probe/profiles/session_5_2026-10-14_18-04-46.json",
+        "sha256": "ec6f4bb70eebca264f483b7e7a8a986860e28d804f116868fc55a3f3973c31fc",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": {
+          "count": 30,
+          "mean_ms": 15.4349,
+          "p50_ms": 13.8605,
+          "p95_ms": 13.978399999999999,
+          "max_ms": 60.813
+        },
+        "reference_prepare_calls_removed": 0,
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 15.4349,
+          "p50_ms": 13.8605,
+          "p95_ms": 13.978399999999999,
+          "max_ms": 60.813
+        },
+        "processing_warm29_excluding_first_processed_frame": {
+          "count": 29,
+          "mean_ms": 13.870137931034481,
+          "p50_ms": 13.859,
+          "p95_ms": 13.9568,
+          "max_ms": 13.982
+        },
+        "first_model_run_ms": 60.813,
+        "session_initialization_ms": [
+          523.727
+        ],
+        "provider_node_event_counts": {
+          "CUDAExecutionProvider": 6420
+        },
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 6,
+        "model_file": "gfpgan_1.4.onnx",
+        "stage": "restore",
+        "profile_file": "outputs/afnan_probe/profiles/session_6_2026-10-14_18-04-47.json",
+        "sha256": "d5396ba8ea83408a8b49a326245ea42260e1e432abdc4dc6ba31b073fce67567",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": {
+          "count": 30,
+          "mean_ms": 33.064433333333334,
+          "p50_ms": 27.869999999999997,
+          "p95_ms": 28.21605,
+          "max_ms": 183.682
+        },
+        "reference_prepare_calls_removed": 0,
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 33.064433333333334,
+          "p50_ms": 27.869999999999997,
+          "p95_ms": 28.21605,
+          "max_ms": 183.682
+        },
+        "processing_warm29_excluding_first_processed_frame": {
+          "count": 29,
+          "mean_ms": 27.870724137931035,
+          "p50_ms": 27.86,
+          "p95_ms": 28.060000000000002,
+          "max_ms": 28.311
+        },
+        "first_model_run_ms": 183.682,
+        "session_initialization_ms": [
+          274.951
+        ],
+        "provider_node_event_counts": {
+          "CUDAExecutionProvider": 16740
+        },
+        "gpu_kernel_events": 0
+      },
+      {
+        "ordinal": 7,
+        "model_file": "xseg_1.onnx",
+        "stage": "occlusion",
+        "profile_file": "outputs/afnan_probe/profiles/session_7_2026-10-14_18-04-48.json",
+        "sha256": "a694d429da5d3ee783a5ab7b62ce795495b4598bb7ab7cc084334449c4f43a5f",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "model_run_all_calls": {
+          "count": 30,
+          "mean_ms": 21.888933333333334,
+          "p50_ms": 19.954,
+          "p95_ms": 21.137,
+          "max_ms": 79.949
+        },
+        "reference_prepare_calls_removed": 0,
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 21.888933333333334,
+          "p50_ms": 19.954,
+          "p95_ms": 21.137,
+          "max_ms": 79.949
+        },
+        "processing_warm29_excluding_first_processed_frame": {
+          "count": 29,
+          "mean_ms": 19.88686206896552,
+          "p50_ms": 19.918,
+          "p95_ms": 20.9986,
+          "max_ms": 21.155
+        },
+        "first_model_run_ms": 79.949,
+        "session_initialization_ms": [
+          45.489
+        ],
+        "provider_node_event_counts": {
+          "CUDAExecutionProvider": 11760,
+          "CPUExecutionProvider": 180
+        },
+        "gpu_kernel_events": 0
+      }
+    ],
+    "approximate_outside_ort_call": {
+      "swap": {
+        "definition": "Same-frame enclosing stage host duration minus corresponding ORT Session/model_run duration. Approximate non-ORT host work; profiler clocks/instrumentation overhead may differ. Individual operation contributions were not measured.",
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 77.678453769877,
+          "p50_ms": 81.2944505116418,
+          "p95_ms": 85.69179528771573,
+          "max_ms": 87.5952649985794
+        },
+        "processing_warm29": {
+          "count": 29,
+          "mean_ms": 77.3364947619907,
+          "p50_ms": 81.0240090172477,
+          "p95_ms": 84.72747079950162,
+          "max_ms": 86.15031199262292
+        }
+      },
+      "restore": {
+        "definition": "Same-frame enclosing stage host duration minus corresponding ORT Session/model_run duration. Approximate non-ORT host work; profiler clocks/instrumentation overhead may differ. Individual operation contributions were not measured.",
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 4.288020102748275,
+          "p50_ms": 4.041176010814494,
+          "p95_ms": 5.024664607584104,
+          "max_ms": 9.805180018564698
+        },
+        "processing_warm29": {
+          "count": 29,
+          "mean_ms": 4.097773209099433,
+          "p50_ms": 4.03767099648714,
+          "p95_ms": 4.825854613551496,
+          "max_ms": 5.076339010257275
+        }
+      },
+      "occlusion": {
+        "definition": "Same-frame enclosing stage host duration minus corresponding ORT Session/model_run duration. Approximate non-ORT host work; profiler clocks/instrumentation overhead may differ. Individual operation contributions were not measured.",
+        "processing_30": {
+          "count": 30,
+          "mean_ms": 0.7240934669604527,
+          "p50_ms": 0.6934894975647321,
+          "p95_ms": 0.8853938998037962,
+          "max_ms": 0.9510210149344047
+        },
+        "processing_warm29": {
+          "count": 29,
+          "mean_ms": 0.7165197589577275,
+          "p50_ms": 0.6929650043230495,
+          "p95_ms": 0.8042098013978453,
+          "max_ms": 0.9510210149344047
+        }
+      }
+    },
+    "warm29_serial_model_run_sum_ms": {
+      "count": 29,
+      "mean_ms": 73.3001724137931,
+      "p50_ms": 73.443,
+      "p95_ms": 75.16279999999999,
+      "max_ms": 75.682
+    },
+    "warm29_serial_model_run_sum_without_target_recognition_ms": {
+      "count": 29,
+      "mean_ms": 68.04775862068965,
+      "p50_ms": 68.197,
+      "p95_ms": 69.21300000000001,
+      "max_ms": 70.321
+    }
+  },
+  "30fps": {
+    "frame_period_ms": 33.333333333333336,
+    "60fps_frame_period_ms": 16.666666666666668,
+    "backend_mean_required_reduction_factor": 5.3218266984348634,
+    "end_to_end_required_throughput_factor": 7.298420694206697,
+    "scope_limit": "Prepared test clip has 25 source FPS. Output metadata set to30 or duplicate/interpolated frames would not demonstrate 30 distinct causal processed camera frames/sec."
+  },
+  "optimization_candidates": [
+    {
+      "candidate": "Instrument INSwapper crop, cached source latent, model_call, output decode, paste-back warp, morphology and blend separately",
+      "evidence": "77.336 ms warm mean outside model_run within swap; current wrapper lumps all of get(paste_back=True).",
+      "status": "Proposed; per-operation bottleneck not measured"
+    },
+    {
+      "candidate": "Cache projected and normalized fixed source latent; avoid redundant target face embedding; use detection/keypoints directly with face identity lock",
+      "evidence": "Exact package uses only source_face.normed_embedding for INSwapper latent, and FaceAnalysis.get runs all retained models on every target face.",
+      "status": "Proposed; exact numerical equivalence and identity-reacquisition behavior require verification"
+    },
+    {
+      "candidate": "Single ROI paste-back/composite from original current frame; eliminate unused fake_diff work only after equivalence checks",
+      "evidence": "Upstream paste_back contains full-frame warps/morphology/float blend; subsequent adapter composites cropped result again. Existing combine initializes result=swapped_bgr.copy so pixels outside crop can retain first paste-back.",
+      "status": "Proposed; not a measured individual-operation saving"
+    },
+    {
+      "candidate": "Keep debug quality/comparison exporters off the live frame path; asynchronous bounded latest-frame capture/output preserving timestamps and sequence",
+      "evidence": "Full quality54.795ms and two-output stage9.072ms are offline costs. Decode1.151ms and backend177.394ms remain.",
+      "status": "Proposed; no live camera latency/drop measurement yet"
+    },
+    {
+      "candidate": "Separate quality and real-time profiles; optimize/replace per-frame restoration and occlusion only after hand/mouth/eye quality tests",
+      "evidence": "Warm serial remaining model calls68.048ms excluding targetrecognition already exceed33.333ms.",
+      "status": "Proposed; TensorRT/FP16/IObinding/device ROI must be benchmarked on pinned models; temporal mask refresh may worsen fast-hand occlusions"
+    }
+  ],
+  "temporal_findings": {
+    "implemented": "Fixed source identity and monotonic timestamp validation only. No landmark/pose/mask/color temporal filter in frozen baseline.",
+    "likely_jitter_sources_to_measure": [
+      "Frame-by-frame detector/keypoint affine drift",
+      "Integer bbox and 18% padding change XSeg/GFPGAN crop coordinate systems",
+      "GFPGAN frame-independent high-blend restoration can fluctuate invented texture/details",
+      "Fresh XSeg masks and fixed13px blur can produce boundary shimmer",
+      "Largest-face selection can switch identity if multiple people appear"
+    ],
+    "candidate_controls": [
+      "Tracked identity lock with gated reacquisition",
+      "Timestamp-aware velocity-sensitive landmark/alignment filtering; reset on scene cut/large gaps",
+      "Flow-warp previous mask with current-frame validation and conservative rejection of hand-edge smear",
+      "Stable aligned face ROI for restoration and occlusion",
+      "Low-rate filtered color/exposure parameters and confidence-based restore blending"
+    ],
+    "caveat": "These are source-based hypotheses and proposed controls, not measured jitter attribution or implemented fixes."
+  },
+  "limitations": [
+    "Full baseline has no ORT node profiles; model_run numbers come from the different30frame profiled probe. Do not directly subtract probe ORT timing from full-video stage timing.",
+    "No device Kernel events exist, so provider-labeled Node event counts prove assignment/execution evidence but their durations or sum do not represent pure GPU kernel time.",
+    "Session/model_run is the full synchronous ORT run event, including relevant runtime/transfer/synchronization work; it is not neural FLOPs alone.",
+    "First model calls and source prepare warm-up are disclosed; excluding one processed frame is a small29frame exploratory sample rather than productionsteady-state validation.",
+    "Stage means include fallback zeros across full baseline; full complete3076frame benchmark should be the deployment reference.",
+    "NVMLdevicepeak4408.5MiB includes all device processes, process allocation was unavailable; extra VRAM and an RTX3090 are not proven quality improvements.",
+    "No human visual review or new camera test was performed in this read-only performance audit."
+  ]
+}
