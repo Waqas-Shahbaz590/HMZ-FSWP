@@ -1,10 +1,12 @@
-# Afnan polish and live-frame plan
+# FaceSwap polish and live-frame plan
 
-Use `D:\Hamza\Face Swap\wqs\afnan_pipeline` as the selected project. Its extracted runtime is the starting baseline. Keep the completed Afnan/FaceFusion comparison, original AFW backup and existing videos intact so each change can be evaluated against the same evidence. The work below is planned; the extraction alone does not claim these improvements are implemented.
+Use `D:\Hamza\Face Swap\wqs\faceswap_pipeline` as the selected project. Its extracted runtime is the starting baseline. Keep the completed FaceSwap/FaceFusion comparison, original AFW backup and existing videos intact so each change can be evaluated against the same evidence. The work below is planned; the extraction alone does not claim these improvements are implemented.
+
+The local project rename is complete; the existing remote deployment has not been changed. Future deployment instructions target `/workspace/wqs/faceswap_pipeline`. Pre-rename logs, outputs, test results and `source_before_rename.tar.gz` are preserved intact in `../backups/pipeline_history_before_rename_20261015/`. Baseline source hashes identify frozen archived bytes, not the renamed current files; use the semantic evidence IDs and hashes in `audits/BASELINE_LATENCY_ANALYSIS.json` and `BACKUP_VERIFICATION.json` to locate the original evidence.
 
 ## Starting measurements and the goal
 
-The current Afnan backend processed all 3,076 supplied frames on the RTX A5000 without a model exception: 3,071 synthetic frames and five explicit original-frame fallbacks. It uses native INSwapper 128, GFPGAN 1.4 at blend 0.75 and bbox-based XSeg1. Full measurements and sampled failed boundaries are recorded in [TEAM_B_REPORT.md](<D:/Hamza/Face Swap/wqs/backend_comparison/TEAM_B_REPORT.md>).
+The current FaceSwap backend processed all 3,076 supplied frames on the RTX A5000 without a model exception: 3,071 synthetic frames and five explicit original-frame fallbacks. It uses native INSwapper 128, GFPGAN 1.4 at blend 0.75 and bbox-based XSeg1. Full measurements and sampled failed boundaries are recorded in [TEAM_B_REPORT.md](<D:/Hamza/Face Swap/wqs/backend_comparison/TEAM_B_REPORT.md>).
 
 | Current stage | Mean completed wall time |
 |---|---:|
@@ -17,7 +19,7 @@ The current Afnan backend processed all 3,076 supplied frames on the RTX A5000 w
 
 Backend throughput is 5.637 FPS. The complete decode, two-encoder export, logging and temporal-review path is 4.110 FPS. These are completed full-run measurements.
 
-The existing 30-frame instrumented probe gives a useful decomposition: after excluding its first cold frame, the INSwapper ONNX call averaged **13.87 ms**, while the same frames spent another **77.34 ms** inside the aggregate swap stage outside that call. This points first to crop/latent preparation, conversions and full-frame warp/paste work, rather than treating the whole 93 ms stage as GPU model inference. These probe numbers may include profiling overhead and are not replacements for the full-run measurements. The detailed mapping and evidence are in [BASELINE_LATENCY_ANALYSIS.md](<D:/Hamza/Face Swap/wqs/afnan_pipeline/audits/BASELINE_LATENCY_ANALYSIS.md>).
+The existing 30-frame instrumented probe gives a useful decomposition: after excluding its first cold frame, the INSwapper ONNX call averaged **13.87 ms**, while the same frames spent another **77.34 ms** inside the aggregate swap stage outside that call. This points first to crop/latent preparation, conversions and full-frame warp/paste work, rather than treating the whole 93 ms stage as GPU model inference. These probe numbers may include profiling overhead and are not replacements for the full-run measurements. The detailed mapping and evidence are in [BASELINE_LATENCY_ANALYSIS.md](<D:/Hamza/Face Swap/wqs/faceswap_pipeline/audits/BASELINE_LATENCY_ANALYSIS.md>).
 
 In that warm probe, completed model calls averaged detector 6.42 ms, target recognition 5.25 ms, swap 13.87 ms, GFPGAN 27.87 ms and XSeg 19.89 ms: **73.30 ms total**, or **68.05 ms** even after hypothetically removing target recognition. Therefore removing paste-back overhead alone cannot establish 30 FPS with these serial model calls. XSeg also has neural nodes on the CPU; requesting CUDA does not make the entire graph run there.
 
@@ -29,7 +31,7 @@ For quality alone, changing this A5000 to a 3090 is not expected to cure the obs
 
 ## 1. Keep the working project clean and reproducible
 
-The live algorithm starts in `afnan/adapter.py`; ONNX tensor conversion is in `afnan/tensors.py`; restoration/mask blending is in `afnan/compositing.py`. `run.py` and `common/` supply file input, timestamps, labeled output and evidence. Models and inputs are project data; virtual environments are rebuilt from the pinned installer/lock.
+The live algorithm starts in `faceswap/adapter.py`; ONNX tensor conversion is in `faceswap/tensors.py`; restoration/mask blending is in `faceswap/compositing.py`. `run.py` and `common/` supply file input, timestamps, labeled output and evidence. Models and inputs are project data; virtual environments are rebuilt from the pinned installer/lock.
 
 Preserve checkpoint/source/input hashes, actual provider lists, precision settings, detector settings and restoration strength per run. Store each experiment in its own output directory. Add new `tracking.py`, `alignment.py` and `occlusion.py` modules as their phases are implemented rather than adding camera capture or display code to the backend. Keep a small model interface so an approved alternate swapper can be tested without replacing tracking and composition.
 
@@ -69,7 +71,7 @@ The current checkpoint's native input/output is **128 × 128**. Resizing its res
 
 There is an official **INSwapper-512-live** project describing native 512 × 512 base/mini models. Its public repository currently presents model information and application links rather than a drop-in ONNX checkpoint/SDK in our project, and states academic/personal-use restrictions. Investigate legitimate checkpoint/SDK access, integration requirements and deployment rights before planning a replacement. Its publisher's performance/quality figures are not measurements of this pipeline. [Official 512-live project](https://github.com/deepinsight/inswapper-512-live).
 
-FaceFusion's **512 pixel boost using INSwapper 128** is another technique: the pinned implementation splits the aligned 512 crop into **16 interleaved 128-sized inputs**, performs a swap for each, then reconstructs it. That is a multi-pass resolution experiment, distinct from native 512 inference; expect extra work and measure actual latency. Do not bring the entire FaceFusion application into the selected Afnan runtime just to test this idea. [Pinned pixel-boost implementation](https://github.com/facefusion/facefusion/blob/72470819a0373be3388b3929c8f8f311f418fc3c/facefusion/processors/pixel_boost.py), [pinned swap loop](https://github.com/facefusion/facefusion/blob/72470819a0373be3388b3929c8f8f311f418fc3c/facefusion/processors/modules/face_swapper/core.py).
+FaceFusion's **512 pixel boost using INSwapper 128** is another technique: the pinned implementation splits the aligned 512 crop into **16 interleaved 128-sized inputs**, performs a swap for each, then reconstructs it. That is a multi-pass resolution experiment, distinct from native 512 inference; expect extra work and measure actual latency. Do not bring the entire FaceFusion application into the selected FaceSwap runtime just to test this idea. [Pinned pixel-boost implementation](https://github.com/facefusion/facefusion/blob/72470819a0373be3388b3929c8f8f311f418fc3c/facefusion/processors/pixel_boost.py), [pinned swap loop](https://github.com/facefusion/facefusion/blob/72470819a0373be3388b3929c8f8f311f418fc3c/facefusion/processors/modules/face_swapper/core.py).
 
 A native 256 alternative or an available 512 model from a different family can be tested behind the same backend interface. It requires its own embedding/template/preprocessing contract and license record. Evaluate identity likeness, expressions, fingers, profiles and latency on the same inputs. High resolution is useful for fine detail, but cannot correct a wrong occlusion mask or inconsistent placement.
 

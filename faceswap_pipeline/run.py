@@ -1,4 +1,4 @@
-"""Labeled, causal offline evaluation of the isolated Afnan pipeline."""
+"""Labeled, causal offline evaluation of the isolated FaceSwap pipeline."""
 from __future__ import annotations
 import argparse
 import csv
@@ -12,7 +12,7 @@ from common.io import VideoReader, VideoWriter, load_reference, label_frame, com
 from common.metrics import GPUMemory, TemporalConsistency, sha256_file, environment_versions, write_json
 
 
-def profile_afnan(directory):
+def profile_onnx_sessions(directory):
     """Keep InsightFace's session subclassing while profiling a short probe."""
     import onnxruntime as ort
     original = ort.InferenceSession
@@ -55,14 +55,14 @@ def main():
     checkpoints = [verify(args.models / spec['file'], spec) for spec in pinned_checkpoints]
     source_provenance = {
         name: sha256_file(project / name)
-        for name in ('run.py', 'afnan/adapter.py', 'afnan/tensors.py', 'afnan/compositing.py',
-                     'afnan/alignment.py', 'afnan/occlusion.py',
+        for name in ('run.py', 'faceswap/adapter.py', 'faceswap/tensors.py', 'faceswap/compositing.py',
+                     'faceswap/alignment.py', 'faceswap/occlusion.py',
                      'common/io.py', 'common/metrics.py', 'scripts/fetch_checkpoints.py', 'checkpoints.json')
     }
     if args.profile:
-        profiled_sessions = profile_afnan(profiles)
-    from afnan.adapter import AfnanBackend
-    backend = AfnanBackend(args.models, restore_blend=args.restore_blend,
+        profiled_sessions = profile_onnx_sessions(profiles)
+    from faceswap.adapter import FaceSwapBackend
+    backend = FaceSwapBackend(args.models, restore_blend=args.restore_blend,
                            hand_protection=not args.no_hand_protection)
     prepared = backend.prepare(load_reference(args.reference))
     setup_ms = (time.perf_counter()-setup_start)*1000
@@ -154,13 +154,13 @@ def main():
             close_info = backend.close()
         except Exception as error:
             finalization_errors.append(f'Backend close: {error}')
-        afnan_profiles = []
+        node_profiles = []
         for session in profiled_sessions:
             try:
                 path = Path(session.end_profiling())
                 events = json.loads(path.read_text())
                 counts = Counter(e.get('args', {}).get('provider') for e in events if e.get('cat') == 'Node' and e.get('args', {}).get('provider'))
-                afnan_profiles.append({'filename': path.name, 'providers': dict(counts), 'sha256': sha256_file(path)})
+                node_profiles.append({'filename': path.name, 'providers': dict(counts), 'sha256': sha256_file(path)})
             except Exception as error:
                 finalization_errors.append(f'ONNX profiling close: {error}')
         reader.close()
@@ -170,7 +170,7 @@ def main():
             return {'mean': statistics.fmean(vals), 'p50': float(np.percentile(vals,50)), 'p95': float(np.percentile(vals,95)), 'max': max(vals)} if vals else None
         stage_names = sorted({stage for r in rows for stage in r['stage_ms']})
         summary = {
-            'backend': 'afnan',
+            'backend': 'faceswap',
             'variant': f'inswapper128_gfpgan_blend_{args.restore_blend}' + ('' if not args.no_hand_protection else '_no_hand_protection'),
             'complete': failure is None and not finalization_errors, 'error': failure, 'finalization_errors': finalization_errors,
             'frames': len(rows), 'status_counts': dict(Counter(r['status'] for r in rows)),
@@ -186,7 +186,7 @@ def main():
             'video': {'fps': reader.fps, 'width': reader.width, 'height': reader.height, 'audio': False},
             'input_provenance': provenance, 'environment': environment_versions(), 'setup_ms': setup_ms,
             'source_provenance': source_provenance, 'checkpoint_provenance': checkpoints,
-            'prepared': prepared, 'backend_close': close_info, 'afnan_node_profiles': afnan_profiles,
+            'prepared': prepared, 'backend_close': close_info, 'node_profiles': node_profiles,
             'source_bounds': {'start_seconds': args.start, 'end_seconds': args.end, 'preroll_frames': reader.preroll_frames},
             'timing_definition': 'Completed synchronous ONNX host-return calls. Stages may cover only backend subsets; backend_ms is full process call. Full end-to-end FPS includes sequential decode, two labeled H264 exports, quality, CSV and encoder finalization; setup, model download, hash and profiling close are excluded. Playback FPS is independent.',
         }

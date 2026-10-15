@@ -1,10 +1,10 @@
 {
   "selected": true,
-  "project": "afnan_pipeline",
-  "development_direction": "Afnan quality, causal stability and measured live-frame optimization",
+  "project": "faceswap_pipeline",
+  "development_direction": "FaceSwap quality, causal stability and measured live-frame optimization",
   "baseline_algorithm_preserved": true,
   "extracted_project_gpu_smoke": "passed: 30 hand-occlusion frames, CUDA execution, both exports verified",
-  "unit_tests": "14 passed",
+  "unit_tests": "38 CPU wrapper tests passed after naming cleanup",
   "baseline": "INSwapper 128 + GFPGAN 1.4 blend 0.75 + XSeg1",
   "placeholder_application_included": false,
   "socket_server_included": false,

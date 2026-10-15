@@ -1,5 +1,5 @@
 {
-  "backend": "afnan",
+  "backend": "faceswap",
   "variant": "inswapper128_gfpgan_blend_0.75",
   "complete": true,
   "error": null,
@@ -161,11 +161,16 @@
     "detector_threshold": 0.25
   },
   "backend_close": null,
-  "afnan_node_profiles": [],
+  "node_profiles": [],
   "source_bounds": {
     "start_seconds": 0.0,
     "end_seconds": null,
     "preroll_frames": 0
   },
-  "timing_definition": "Completed synchronous ONNX host-return calls. Stages may cover only backend subsets; backend_ms is full process call. Full end-to-end FPS includes sequential decode, two labeled H264 exports, quality, CSV and encoder finalization; setup, model download, hash and profiling close are excluded. Playback FPS is independent."
+  "timing_definition": "Completed synchronous ONNX host-return calls. Stages may cover only backend subsets; backend_ms is full process call. Full end-to-end FPS includes sequential decode, two labeled H264 exports, quality, CSV and encoder finalization; setup, model download, hash and profiling close are excluded. Playback FPS is independent.",
+  "normalization_provenance": {
+    "original_sha256": "706e1400eeade3fd3fa7d8dcbbb16c375403894dba171f958a7e25d6109b2db7",
+    "original_source_snapshot": "../backups/pipeline_history_before_rename_20261015/source_before_rename.tar.gz",
+    "changes": "Backend label and node profile field renamed; measured values preserved. This is a readable copy of historical evidence, not a new GPU run."
+  }
 }

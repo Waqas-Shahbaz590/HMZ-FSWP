@@ -1,11 +1,11 @@
-# Publish only the selected Afnan project and repository metadata.
+# Publish only the selected FaceSwap project and repository metadata.
 # Other workspace projects and any future root resources stay local.
 /*
 !/.gitignore
 !/.gitattributes
 !/README.md
-!/ACTIVE_AFNAN_PROJECT.json
-!/afnan_pipeline/
+!/ACTIVE_PROJECT.json
+!/faceswap_pipeline/
 
 # Python environments, compiled files, and caches
 .venv*/

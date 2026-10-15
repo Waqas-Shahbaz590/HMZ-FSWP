@@ -1,4 +1,4 @@
-"""Frame-based Afnan adapter: aligned single-paste face swap pipeline.
+"""Frame-based FaceSwap adapter: aligned single-paste face swap pipeline.
 
 The evidence copy source_original.py is intentionally never imported. There are
 no listeners, cameras, JPEG transport, automatic downloads, or future frames.
@@ -63,7 +63,7 @@ def _largest_detection(bboxes):
     return int(np.argmax(areas))
 
 
-class AfnanBackend:
+class FaceSwapBackend:
     """One fixed reference identity and causal current-frame inference.
 
     models_dir contains inswapper_128.onnx, gfpgan_1.4.onnx, xseg_1.onnx and

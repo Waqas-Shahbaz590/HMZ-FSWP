@@ -68,7 +68,7 @@ sha256sum "$TASK_RUN/code_snapshot.tar.gz" "$TASK_REFERENCE" "$TASK_VIDEO" \
 .venv/bin/python -m pip freeze > "$TASK_RUN/environment.lock.txt"
 nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv \
     > "$TASK_RUN/hardware.csv"
-.venv/bin/python -m unittest discover -s afnan/tests -v 2>&1 | tee "$TASK_RUN/unit_tests.log"
+.venv/bin/python -m unittest discover -s faceswap/tests -v 2>&1 | tee "$TASK_RUN/unit_tests.log"
 .venv/bin/python scripts/fetch_checkpoints.py --verify-only 2>&1 | tee "$TASK_RUN/checkpoints.log"
 
 run_case() {

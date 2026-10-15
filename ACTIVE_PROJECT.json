@@ -1,0 +1,13 @@
+{
+  "selected_backend": "FaceSwap",
+  "selected_project": "D:/Hamza/Face Swap/wqs/faceswap_pipeline",
+  "remote_project": "/workspace/wqs/faceswap_pipeline",
+  "entry_point": "run.py",
+  "model_pipeline": "faceswap/adapter.py",
+  "forward_plan": "POLISH_PLAN.md",
+  "status": "selected local face-swap project; descriptive names applied across runtime, tests and setup",
+  "remote_deployment_status": "target path only; existing remote deployment has not been migrated",
+  "preserved_history": "D:/Hamza/Face Swap/wqs/backups/pipeline_history_before_rename_20261015",
+  "preserved_comparison": "D:/Hamza/Face Swap/wqs/backend_comparison",
+  "original_afw_backup": "D:/Hamza/Face Swap/wqs/backups/afw-before-audit-20261014T144019Z.tar.gz"
+}

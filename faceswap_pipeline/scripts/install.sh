@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-TASK_PYTHON="${AFNAN_PYTHON:-/venv/main/bin/python}"
+TASK_PYTHON="${FACESWAP_PYTHON:-/venv/main/bin/python}"
 if [[ -e .venv ]]; then
     echo "Existing .venv preserved. Use a fresh project directory for installation." >&2
     exit 1

@@ -6,10 +6,10 @@ from types import SimpleNamespace
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from afnan.adapter import AfnanBackend
-from afnan.alignment import estimate_affine, face_template
-from afnan.compositing import compose_aligned, padded_box
-from afnan.tensors import ImageInput, decode_mask
+from faceswap.adapter import FaceSwapBackend
+from faceswap.alignment import estimate_affine, face_template
+from faceswap.compositing import compose_aligned, padded_box
+from faceswap.tensors import ImageInput, decode_mask
 
 
 # Landmark geometry: face_template(128) * 0.5 places a valid face inside the
@@ -105,13 +105,13 @@ def backend(mask=None, gfp_output=None, restore_blend=0.75, mask_shape=None, swa
     swapper = Swapper(swap_output)
     gfp = Session([1, 3, 512, 512], gfp_output if gfp_output is not None else np.zeros((1, 3, 512, 512), np.float32))
     occ = Session(mask_shape or [1, 256, 256, 3], mask if mask is not None else np.ones((1, 256, 256, 1), np.float32))
-    adapter = AfnanBackend("unused", providers=["CPUExecutionProvider"], strict_cuda=False,
+    adapter = FaceSwapBackend("unused", providers=["CPUExecutionProvider"], strict_cuda=False,
                            restore_blend=restore_blend, hand_protection=hand_protection,
                            _components=(app, swapper, gfp, occ, palm, landmark))
     return adapter, app, swapper, gfp, occ
 
 
-class AfnanTests(unittest.TestCase):
+class FaceSwapBackendTests(unittest.TestCase):
     def setUp(self):
         self.rgb = np.zeros((64, 64, 3), dtype=np.uint8)
         self.rgb[..., 0] = 30
@@ -221,7 +221,7 @@ class AfnanTests(unittest.TestCase):
     def test_strict_cuda_missing_provider_rejected_at_construction(self):
         adapter, app, swapper, gfp, occ = backend()
         with self.assertRaises(RuntimeError):
-            AfnanBackend("unused", providers=["CUDAExecutionProvider", "CPUExecutionProvider"],
+            FaceSwapBackend("unused", providers=["CUDAExecutionProvider", "CPUExecutionProvider"],
                          strict_cuda=True, hand_protection=False,
                          _components=(app, swapper, gfp, occ))
 

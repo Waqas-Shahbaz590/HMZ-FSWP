@@ -1,4 +1,4 @@
-"""Fetch/verify pinned pretrained Afnan checkpoints without external code.
+"""Fetch/verify pinned pretrained FaceSwap checkpoints without external code.
 
 Publisher CRC32 detects corruption; the pinned SHA256 values identify the
 already tested baseline assets. They are observed hashes, not publisher-signed
@@ -58,7 +58,7 @@ def download(url, target):
     partial = target.with_suffix(target.suffix + ".part")
     for attempt in range(4):
         try:
-            request = urllib.request.Request(url, headers={"User-Agent": "WQS-Afnan-Evaluation/1.0"})
+            request = urllib.request.Request(url, headers={"User-Agent": "WQS-FaceSwap-Evaluation/1.0"})
             with urllib.request.urlopen(request, timeout=90) as response, partial.open("wb") as stream:
                 shutil.copyfileobj(response, stream, 1024 * 1024)
             os.replace(partial, target)

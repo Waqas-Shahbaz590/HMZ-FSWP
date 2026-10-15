@@ -1,6 +1,6 @@
 {
   "audit_date": "2026-10-14",
-  "scope": "Read-only decomposition of existing Afnan 30-frame profiled probe and 3076-frame unprofiled full baseline; no new GPU or SSH job; no runtime change or achieved-30FPS claim.",
+  "scope": "Read-only decomposition of existing FaceSwap 30-frame profiled probe and 3076-frame unprofiled full baseline; no new GPU or SSH job; no runtime change or achieved-30FPS claim.",
   "machine": {
     "gpu": "NVIDIA RTX A5000",
     "driver": "555.58.02",
@@ -11,41 +11,52 @@
     "python": "3.12.14"
   },
   "evidence": {
+    "path_basis": "Search directories are relative to the current project root; evidence IDs are semantic labels, not renamed filesystem paths.",
+    "search_directories": ["../backend_comparison", "../backups"],
+    "provenance_note": "Hashes identify frozen archived baseline bytes. Source hashes do not describe the renamed current files. Locate evidence by SHA-256 and size; profile_file values are basenames matched by each session SHA-256.",
     "source_setup_archive": {
-      "path": "D:\\Hamza\\Face Swap\\wqs\\backups\\comparison-source-setup-20261014.tar.gz",
+      "evidence_id": "comparison_source_setup_archive",
+      "file": "comparison-source-setup-20261014.tar.gz",
       "sha256": "b5c6cd3ce8e8ccb1c265a1bbcd0367fe1d2aa008e391770c9a535c9de7cb514f",
       "size_bytes": 102329691
     },
     "files": {
-      "outputs/afnan_full/summary.json": {
+      "full_baseline_summary": {
+        "basename": "summary.json",
         "sha256": "706e1400eeade3fd3fa7d8dcbbb16c375403894dba171f958a7e25d6109b2db7",
         "size_bytes": 5061
       },
-      "outputs/afnan_probe/summary.json": {
+      "profile_probe_summary": {
+        "basename": "summary.json",
         "sha256": "820548193ce94eb5ad7f53681c64df22d763d9d8c90f2c7ded841880d4bce2f5",
         "size_bytes": 6708
       },
-      "outputs/afnan_probe/frame_metrics.csv": {
+      "profile_probe_frame_metrics": {
+        "basename": "frame_metrics.csv",
         "sha256": "db5e6b66125eb19184ea82c830dfed7cc68ef872842a747ffa8594bd3c2852ee",
         "size_bytes": 36164
       },
-      "logs/run_afnan_probe.log": {
+      "profile_probe_log": {
         "sha256": "dfb7752354214e100c5cd80b7023ee4f8b56c1c474f9faa8e01c4b791a13df63",
         "size_bytes": 5674
       },
-      "run.py": {
+      "baseline_runner_source": {
+        "basename": "run.py",
         "sha256": "d24903fee6c51e2a0352021d951bdd3cd51910581882df35a22aa25a8fc307a6",
         "size_bytes": 11779
       },
-      "afnan/adapter.py": {
+      "baseline_adapter_source": {
+        "basename": "adapter.py",
         "sha256": "ee673b7f82472bc8c09740c24afac66235b605d93edd31fdbb20a44f672d5526",
         "size_bytes": 9926
       },
-      "afnan/compositing.py": {
+      "baseline_compositing_source": {
+        "basename": "compositing.py",
         "sha256": "41878aae84bb90e4ad9644b982d389a6cfbc3155b0d712346116e5fbeb6fa825",
         "size_bytes": 1706
       },
-      "MACHINE_INVENTORY.json": {
+      "machine_inventory": {
+        "basename": "MACHINE_INVENTORY.json",
         "sha256": "75ba30b688db23fe9e48c2d949a674fadd36b4f622be434312ea22494c5fddbb",
         "size_bytes": 7982
       }
@@ -207,9 +218,9 @@
         "ordinal": 0,
         "model_file": "buffalo_l/1k3d68.onnx",
         "stage": null,
-        "profile_file": "outputs/afnan_probe/profiles/session_0_2026-10-14_18-04-44.json",
+        "profile_file": "session_0_2026-10-14_18-04-44.json",
         "sha256": "6512a4d8a6bb0a5d4e0d85e08008c491b98d366007c013affdd08d1ab7def637",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": null,
         "reference_prepare_calls_removed": 0,
         "processing_30": null,
@@ -225,9 +236,9 @@
         "ordinal": 1,
         "model_file": "buffalo_l/2d106det.onnx",
         "stage": null,
-        "profile_file": "outputs/afnan_probe/profiles/session_1_2026-10-14_18-04-45.json",
+        "profile_file": "session_1_2026-10-14_18-04-45.json",
         "sha256": "8be704a6bc2c0f4d92ecee9ba2f37c366065e8a888cce73c2ce65ad69b8f2122",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": null,
         "reference_prepare_calls_removed": 0,
         "processing_30": null,
@@ -243,9 +254,9 @@
         "ordinal": 2,
         "model_file": "buffalo_l/det_10g.onnx",
         "stage": "detect",
-        "profile_file": "outputs/afnan_probe/profiles/session_2_2026-10-14_18-04-45.json",
+        "profile_file": "session_2_2026-10-14_18-04-45.json",
         "sha256": "6d6954a6ae066a5d8f91571b458c48dbe7eed098d7ddf5463d346382fb2e0df6",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": {
           "count": 31,
           "mean_ms": 18.997225806451613,
@@ -282,9 +293,9 @@
         "ordinal": 3,
         "model_file": "buffalo_l/genderage.onnx",
         "stage": null,
-        "profile_file": "outputs/afnan_probe/profiles/session_3_2026-10-14_18-04-45.json",
+        "profile_file": "session_3_2026-10-14_18-04-45.json",
         "sha256": "fa68a9941855fb1c8ab50ee9461d04b7542331bda71961fb9aefa6eaa9f1e1ca",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": null,
         "reference_prepare_calls_removed": 0,
         "processing_30": null,
@@ -300,9 +311,9 @@
         "ordinal": 4,
         "model_file": "buffalo_l/w600k_r50.onnx",
         "stage": "recognition",
-        "profile_file": "outputs/afnan_probe/profiles/session_4_2026-10-14_18-04-45.json",
+        "profile_file": "session_4_2026-10-14_18-04-45.json",
         "sha256": "2d4175f09520a21d5773d7c0e00f7897a1409e666aed03b889507d4f8726879e",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": {
           "count": 31,
           "mean_ms": 8.499645161290323,
@@ -338,9 +349,9 @@
         "ordinal": 5,
         "model_file": "inswapper_128.onnx",
         "stage": "swap",
-        "profile_file": "outputs/afnan_probe/profiles/session_5_2026-10-14_18-04-46.json",
+        "profile_file": "session_5_2026-10-14_18-04-46.json",
         "sha256": "ec6f4bb70eebca264f483b7e7a8a986860e28d804f116868fc55a3f3973c31fc",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": {
           "count": 30,
           "mean_ms": 15.4349,
@@ -376,9 +387,9 @@
         "ordinal": 6,
         "model_file": "gfpgan_1.4.onnx",
         "stage": "restore",
-        "profile_file": "outputs/afnan_probe/profiles/session_6_2026-10-14_18-04-47.json",
+        "profile_file": "session_6_2026-10-14_18-04-47.json",
         "sha256": "d5396ba8ea83408a8b49a326245ea42260e1e432abdc4dc6ba31b073fce67567",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": {
           "count": 30,
           "mean_ms": 33.064433333333334,
@@ -414,9 +425,9 @@
         "ordinal": 7,
         "model_file": "xseg_1.onnx",
         "stage": "occlusion",
-        "profile_file": "outputs/afnan_probe/profiles/session_7_2026-10-14_18-04-48.json",
+        "profile_file": "session_7_2026-10-14_18-04-48.json",
         "sha256": "a694d429da5d3ee783a5ab7b62ce795495b4598bb7ab7cc084334449c4f43a5f",
-        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and run_afnan_probe.log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
+        "mapping_basis": "Exact InsightFace 0.7.3 sorted pack creation order before allowed_modules filtering, adapter subsequent construction order, and the archived profile-probe log model names/shapes. Active trace first-node tensor shapes cross-check detector320/recognition112/GFPGAN512/XSeg256NHWC; swap log128 and latent512.",
         "model_run_all_calls": {
           "count": 30,
           "mean_ms": 21.888933333333334,

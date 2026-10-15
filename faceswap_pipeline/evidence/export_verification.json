@@ -40,8 +40,8 @@
       "sha256": "c903379593ea368f63e31615664450c99e4072abd285fbf1f6b61add8e2fff84"
     },
     "summary.json": {
-      "bytes": 5061,
-      "sha256": "706e1400eeade3fd3fa7d8dcbbb16c375403894dba171f958a7e25d6109b2db7"
+      "bytes": 5458,
+      "sha256": "2c799b1eafe3e647402ab0951e2dd1848fd34f560566914ba1507ce6e7ff7cd9"
     },
     "frame_metrics.csv": {
       "bytes": 3695145,
@@ -105,5 +105,6 @@
     }
   },
   "complete_exports": true,
-  "validation_scope": "Decoded counts, silent streams, geometry, FPS, duration, metrics order, file hashes and sampled disclosure borders. Not identity or perceptual-quality validation."
+  "validation_scope": "Decoded counts, silent streams, geometry, FPS, duration, metrics order, file hashes and sampled disclosure borders. Not identity or perceptual-quality validation.",
+  "provenance_note": "Summary checksum describes the normalized readable copy. Original receipt is preserved in the source snapshot identified by summary normalization_provenance; video and metrics checksums are unchanged. No GPU or export validation was rerun during naming cleanup."
 }

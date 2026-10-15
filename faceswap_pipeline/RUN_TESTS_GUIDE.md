@@ -1,13 +1,17 @@
 # Repeated pod testing after code changes
 
-Edit the selected project at `D:\Hamza\Face Swap\wqs\afnan_pipeline`. Its deployed Linux directory is `/workspace/wqs/afnan_pipeline`. Use the already installed `.venv` for ordinary Python edits. `scripts/install.sh` is for a fresh environment and deliberately refuses to overwrite an existing one.
+Edit the selected project at `D:\Hamza\Face Swap\wqs\faceswap_pipeline`. The local rename is complete; the existing remote deployment has not been renamed or changed. The commands below target the new Linux directory `/workspace/wqs/faceswap_pipeline` and require a complete deployment there before individual file uploads or tests. Restore the verified models and inputs and build a fresh `.venv` at that destination; virtual environments contain absolute paths and should be rebuilt after a directory rename. `scripts/install.sh` deliberately refuses to overwrite an existing environment.
+
+Set `FACESWAP_PYTHON` to choose the installer's Python 3.12 executable, and `FACESWAP_CUDA_LIB_DIRS` to supply colon-separated CUDA library directories for the GPU runner. After the new target deployment is installed, ordinary source edits can reuse its `.venv`.
+
+Previous local logs, outputs and downloaded test results remain unchanged under `../backups/pipeline_history_before_rename_20261015/`, together with `source_before_rename.tar.gz`. Historical source hashes describe those frozen files, not this renamed source tree. New cycles create fresh output and download directories.
 
 ## Upload edits from Windows
 
 For an individual edited file, use PowerShell:
 
 ```powershell
-scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 "D:/Hamza/Face Swap/wqs/afnan_pipeline/afnan/adapter.py" root@167.179.138.57:/workspace/wqs/afnan_pipeline/afnan/
+scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 "D:/Hamza/Face Swap/wqs/faceswap_pipeline/faceswap/adapter.py" root@167.179.138.57:/workspace/wqs/faceswap_pipeline/faceswap/
 ```
 
 Change the source/destination to the file you edited. For example, `common/io.py` belongs under the remote `common/` directory. New source modules must be uploaded too. Keep remote models, inputs, `.venv`, and previous outputs available. A completed upload should be tested as one code version; wait for that cycle to finish before uploading the next change. File-copy uploads do not mirror local deletions, so a major restructuring should use a fresh release directory or explicitly review obsolete remote files.
@@ -15,7 +19,7 @@ Change the source/destination to the file you edited. For example, `common/io.py
 Upload the repeat-test helper once, or after editing it:
 
 ```powershell
-scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 "D:/Hamza/Face Swap/wqs/afnan_pipeline/scripts/test_cycle.sh" root@167.179.138.57:/workspace/wqs/afnan_pipeline/scripts/
+scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 "D:/Hamza/Face Swap/wqs/faceswap_pipeline/scripts/test_cycle.sh" root@167.179.138.57:/workspace/wqs/faceswap_pipeline/scripts/
 ```
 
 Connect using the last supplied address (substitute a new SSH command if Vast changes it):
@@ -27,11 +31,11 @@ ssh -i C:/Users/hd/.ssh/id_ed25519 -p 42051 root@167.179.138.57
 ## Run the cycle on the pod
 
 ```bash
-cd /workspace/wqs/afnan_pipeline
+cd /workspace/wqs/faceswap_pipeline
 bash scripts/test_cycle.sh hand_mask_v1 quick
 ```
 
-`quick` runs the 14 focused wrapper tests, checkpoint verification, a 30-frame frontal smoke at the beginning, then the 30–40 second eye/nose clip, 47–57 second head-turn clip and 83–93 second mouth/hand clip. Each export is independently verified. Wrapper/export failures and reported processing errors stop the cycle, preserving its logs and any partial evidence. A smoke containing zero synthetic frames also fails. Missing-face fallbacks remain recorded for visual review. Every invocation creates a unique folder such as `outputs/hand_mask_v1_20261015T090000Z_1234`; previous runs are preserved. The UTC timestamp in that name identifies the run, not the local clock.
+`quick` runs the focused wrapper tests, checkpoint verification, a 30-frame frontal smoke at the beginning, then the 30–40 second eye/nose clip, 47–57 second head-turn clip and 83–93 second mouth/hand clip. Each export is independently verified. Wrapper/export failures and reported processing errors stop the cycle, preserving its logs and any partial evidence. A smoke containing zero synthetic frames also fails. Missing-face fallbacks remain recorded for visual review. Every invocation creates a unique folder such as `outputs/hand_mask_v1_20261015T090000Z_1234`; previous runs are preserved. The UTC timestamp in that name identifies the run, not the local clock.
 
 Inspect the quick comparisons, then promote that unchanged version to a full regression:
 
@@ -63,7 +67,7 @@ When model/runtime/provider code changes, include a short CUDA node profile:
 bash scripts/test_cycle.sh gpu_runtime_v1 quick --profile-smoke
 ```
 
-Profiling applies only to the smoke. Other clips and the full run remain unprofiled. Instrumented smoke speed is not a performance benchmark. The old `scripts/smoke_extraction.sh` uses the already existing `outputs/extraction_smoke` directory; use the new cycle helper for repeat runs.
+Profiling applies only to the smoke. Other clips and the full run remain unprofiled. Instrumented smoke speed is not a performance benchmark. The old `scripts/smoke_extraction.sh` uses the fixed `outputs/extraction_smoke` directory; use the new cycle helper for repeat runs.
 
 For another portrait/video:
 
@@ -88,8 +92,8 @@ Run one measured GPU cycle at a time, keep portrait/video/settings fixed when co
 Use the exact run folder printed at completion:
 
 ```powershell
-New-Item -ItemType Directory -Force "D:/Hamza/Face Swap/wqs/afnan_pipeline/test_results" | Out-Null
-scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 -r root@167.179.138.57:/workspace/wqs/afnan_pipeline/outputs/REPLACE_WITH_PRINTED_RUN_FOLDER "D:/Hamza/Face Swap/wqs/afnan_pipeline/test_results/"
+New-Item -ItemType Directory -Force "D:/Hamza/Face Swap/wqs/faceswap_pipeline/test_results" | Out-Null
+scp -i C:/Users/hd/.ssh/id_ed25519 -P 42051 -r root@167.179.138.57:/workspace/wqs/faceswap_pipeline/outputs/REPLACE_WITH_PRINTED_RUN_FOLDER "D:/Hamza/Face Swap/wqs/faceswap_pipeline/test_results/"
 ```
 
 This brings back videos, metrics, verification receipts, logs and the code used for that cycle. Download accepted versions before disposing of the ephemeral pod. Run-folder examples in this guide are examples, not existing results.

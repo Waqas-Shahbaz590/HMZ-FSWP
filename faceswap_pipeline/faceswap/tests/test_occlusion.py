@@ -6,8 +6,8 @@ from types import SimpleNamespace
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from afnan import occlusion
-from afnan.alignment import ImplausibleTransform, estimate_affine, face_template, validate_affine
+from faceswap import occlusion
+from faceswap.alignment import ImplausibleTransform, estimate_affine, face_template, validate_affine
 
 from test_adapter import backend, face
 

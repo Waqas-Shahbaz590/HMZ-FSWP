@@ -1,5 +1,5 @@
 """Causal offline adapter for the actual AFW face-swap operations."""
 
-from .adapter import AfnanBackend
+from .adapter import FaceSwapBackend
 
-__all__ = ["AfnanBackend"]
+__all__ = ["FaceSwapBackend"]

@@ -1,0 +1,43 @@
+{
+  "selected_project": "D:\\Hamza\\Face Swap\\wqs\\faceswap_pipeline",
+  "search_directory": "../backups",
+  "archive_locator": "Evidence IDs are semantic labels. Locate unchanged original archives by SHA-256 and bytes in search_directory; archive filenames were not renamed.",
+  "provenance_note": "Verification findings describe frozen archived baseline bytes, not the renamed current source files.",
+  "remote_source_snapshot": {
+    "evidence_id": "clean_source_snapshot_20261014",
+    "bytes": 95377016,
+    "sha256": "8aa956a8ffcc7c2145af59ffbbabce718729d2ddbcb6608efe0154cc4b95730c",
+    "downloaded_remote_checksum_verified": true
+  },
+  "complete_local_project_archive": {
+    "evidence_id": "complete_pre_polish_project_20261015",
+    "bytes": 1284150669,
+    "sha256": "4d690dc8b70750ebd3c295d8d09376396d8bfcb72a648029a7a62443a639e6d1",
+    "origin": "Built locally from verified downloaded source/inputs/smoke and previously downloaded publisher-verified pretrained models"
+  },
+  "phase1_signedoff_snapshot": {
+    "evidence_id": "phase1_signedoff_source_20261015",
+    "bytes": 57652,
+    "sha256": "68fc58e5f36a72ec3d833d5ed8f0082979c24d4dcbeda29b8c6b0a57b2cdb651"
+  },
+  "pre_rename_local_history": {
+    "directory": "../backups/pipeline_history_before_rename_20261015",
+    "preserved_directories": ["logs", "outputs", "test_results", "bytecode"],
+    "tracked_source_snapshot": {
+      "file": "source_before_rename.tar.gz",
+      "bytes": 74642,
+      "sha256": "002051f0dd4704f7fd119b9cb532db34dd55054bef377ca5d0e761ec5e99003a"
+    },
+    "preservation": "Historical artifacts and their embedded receipts remain unchanged; current source names and hashes differ."
+  },
+  "checkpoints_verified": 8,
+  "runtime_source_hashes_verified": true,
+  "input_hashes_verified": true,
+  "downloaded_smoke_export_hashes_verified": true,
+  "smoke_frames": 30,
+  "smoke_status_counts": {
+    "animated": 30
+  },
+  "source_algorithm": "Preserved tested baseline; proposed polish changes not yet implemented",
+  "excluded": "Virtual environments, bytecode caches and temporary partial files"
+}
